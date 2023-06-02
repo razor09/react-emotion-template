@@ -1,0 +1,62 @@
+{
+  "name": "react-emotion-template",
+  "scripts": {
+    "start": "webpack serve --config webpack/config.ts --progress --mode=development --name=local",
+    "start:remote": "webpack serve --config webpack/config.ts --progress --mode=development",
+    "build": "webpack --config webpack/config.ts --progress --mode=production",
+    "serve": "ts-node tools/scripts/server.ts",
+    "clear": "rm -rf dist node_modules public/mockServiceWorker.js && npm ci",
+    "clear:force": "rm -rf dist node_modules package-lock.json public/mockServiceWorker.js && npm install",
+    "update": "npx ncu -u && npm install",
+    "update:force": "npx ncu -u && npm run clear:force",
+    "lint": "prettier --write '{public,src,tools,webpack}/**/*.{js,ts,tsx}'",
+    "lint:staged": "npm run lint && git add --all",
+    "generate:component": "ts-node tools/codegen/scripts/component.ts",
+    "generate:store": "ts-node tools/codegen/scripts/store.ts",
+    "generate:mocks": "ts-node tools/codegen/scripts/mocks.ts",
+    "push": "git add --all && git commit -m 'update' && git push origin master"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "pre-commit": {
+    "run": "lint:staged"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  },
+  "dependencies": {
+    "mobx": "6.9.0",
+    "mobx-react": "7.6.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.11.2",
+    "react-transition-group": "4.4.5"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "11.11.0",
+    "@emotion/react": "11.11.0",
+    "@emotion/styled": "11.11.0",
+    "@types/http-server": "0.12.1",
+    "@types/node": "20.2.4",
+    "@types/react": "18.2.7",
+    "@types/react-dom": "18.2.4",
+    "@types/react-transition-group": "4.4.6",
+    "babel-loader": "9.1.2",
+    "html-webpack-plugin": "5.5.1",
+    "http-server": "14.1.1",
+    "msw": "1.2.1",
+    "npm-check-updates": "16.10.12",
+    "pre-commit": "1.2.2",
+    "prettier": "2.8.8",
+    "terser-webpack-plugin": "5.3.9",
+    "ts-loader": "9.4.3",
+    "ts-node": "10.9.1",
+    "typescript": "5.0.4",
+    "webpack": "5.84.1",
+    "webpack-cli": "5.1.1",
+    "webpack-dev-server": "4.15.0"
+  }
+}

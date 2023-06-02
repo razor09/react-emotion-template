@@ -1,0 +1,22 @@
+import { css } from '@emotion/react';
+import { default as styled } from '@emotion/styled';
+import { observer } from 'mobx-react';
+import { nameComponent } from './name.d';
+
+export const name = observer<nameComponent>(() => {
+  return (
+    <Container>
+      <div css={inner}>name</div>
+    </Container>
+  );
+});
+
+name.defaultProps = {};
+
+const Container = styled.div`
+  background: inherit;
+`;
+
+const inner = css`
+  background: inherit;
+`;
