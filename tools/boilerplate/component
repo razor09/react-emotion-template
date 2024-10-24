@@ -11,8 +11,6 @@ export const name = observer<nameProps>(() => {
   )
 })
 
-name.defaultProps = {}
-
 const Container = styled.div`
   background: inherit;
 `
